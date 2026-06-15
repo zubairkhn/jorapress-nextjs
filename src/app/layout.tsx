@@ -10,6 +10,7 @@ import {
   softwareApplicationSchema,
   websiteSchema,
 } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
