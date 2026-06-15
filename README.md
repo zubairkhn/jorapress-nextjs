@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AIWP — Marketing & Download Site
 
-## Getting Started
+The public website for the **AIWP — AI WordPress Builder** plugin. Lets visitors
+explore everything the plugin does, download the free version, and subscribe to
+Pro / Agency.
 
-First, run the development server:
+Built with **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4**.
+Dark, dev-first theme (electric cyan + lime).
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm start        # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    layout.tsx        root layout (Navbar + Footer, SEO metadata)
+    page.tsx          home — all marketing sections
+    pricing/          full pricing + tier comparison + FAQ
+    download/         free download, install steps, MCP connect snippet
+    checkout/         Stripe-ready checkout stub (reads ?plan=)
+    globals.css       design tokens + Tailwind theme
+  components/
+    Navbar.tsx        nav + footer + logo
+    ui.tsx            Button, Section, SectionHeading, FeatureCard, Eyebrow
+    Icon.tsx          inline SVG icon set
+    Terminal.tsx      hero terminal/MCP mockup
+    Pricing.tsx       pricing cards (home + pricing page)
+    Faq.tsx           accordion
+  lib/
+    content.ts        ALL copy/data — edit here to change the site
+public/
+    aiwp.zip          the packaged free plugin (served at /download)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All copy and data lives in [`src/lib/content.ts`](src/lib/content.ts) — plans,
+features, tools, FAQs, stats. Edit that one file to update the site.
 
-## Learn More
+## Wiring up Stripe (checkout)
 
-To learn more about Next.js, take a look at the following resources:
+The checkout page (`src/app/checkout/page.tsx`) is a styled placeholder. To make
+it live:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. `npm i stripe @stripe/stripe-js`
+2. Add `STRIPE_SECRET_KEY` and price IDs to `.env.local`.
+3. Add a route handler (e.g. `src/app/api/checkout/route.ts`) that creates a
+   Stripe Checkout Session and redirects to `session.url`.
+4. Point each plan's `href` in `content.ts` at that handler (or call it from the
+   checkout button).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Updating the downloadable plugin
 
-## Deploy on Vercel
+The free download is `public/aiwp.zip`. Re-package from the plugin folder:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+cd ../  # plugins dir
+zip -rq aiwp-nextjs/public/aiwp.zip aiwp -x "aiwp/.git/*" "*/.DS_Store"
+```
+# jorapress-nextjs
