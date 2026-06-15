@@ -114,14 +114,25 @@ export function Footer() {
           title="Company"
           links={[
             { label: "jorapress.com", href: "https://jorapress.com" },
-            { label: "Contact", href: `mailto:${site.email}` },
+            { label: "Contact", href: "/contact" },
             { label: "License (GPL-2.0)", href: "https://www.gnu.org/licenses/gpl-2.0.html" },
           ]}
         />
       </div>
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-fg-dim sm:flex-row">
-          <p>© {new Date().getFullYear()} JoraPress by {site.author}. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} JoraPress by{" "}
+            <a
+              href={site.authorUrl}
+              target="_blank"
+              rel="noopener"
+              className="text-fg-muted transition-colors hover:text-cyan-soft"
+            >
+              {site.author}
+            </a>
+            . All rights reserved.
+          </p>
           <p>Requires WordPress {site.requires.wp} · PHP {site.requires.php}</p>
         </div>
       </div>

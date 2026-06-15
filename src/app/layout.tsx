@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description:
     "JoraPress is a secure remote-execution bridge for WordPress. Connect Claude Code, Cursor or Windsurf over MCP — or use the built-in chat panel — to build pages in any builder, then diagnose and fix bugs, performance and SEO. Every action gated, snapshotted, audited and reversible.",
   applicationName: site.name,
-  authors: [{ name: site.author }],
+  authors: [{ name: site.author, url: site.authorUrl }],
   creator: site.author,
   publisher: site.name,
   category: "technology",

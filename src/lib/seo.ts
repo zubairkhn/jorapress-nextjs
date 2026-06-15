@@ -21,8 +21,8 @@ export const organizationSchema = {
   url: SITE_URL,
   logo: abs("/icon.svg"),
   email: site.email,
-  founder: { "@type": "Person", name: site.author },
-  sameAs: [SITE_URL],
+  founder: { "@type": "Organization", name: site.author, url: site.authorUrl },
+  sameAs: [SITE_URL, site.authorUrl],
 };
 
 /** The site itself — enables the sitelinks search box where applicable. */

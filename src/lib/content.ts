@@ -16,7 +16,8 @@ export const site = {
   tagline: "AI WordPress Builder",
   domain: "jorapress.com",
   url: SITE_URL,
-  author: "Zubair",
+  author: "The Tech Appify",
+  authorUrl: "https://www.thetechappify.com/",
   version: "0.1.0",
   email: "info@jorapress.com",
   requires: { wp: "6.5+", php: "8.1+" },
@@ -29,6 +30,7 @@ export const nav = [
   { label: "Site Doctor", href: "/#doctor" },
   { label: "Security", href: "/#security" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const hero = {
@@ -50,8 +52,14 @@ export const builders = [
   "Gutenberg",
   "Beaver Builder",
   "Oxygen",
-  "WP-CLI",
-  "WooCommerce",
+  "Spectra",
+  "Kadence Blocks",
+  "GenerateBlocks",
+ "SeedProd",
+  "Visual Composer",
+  "Thrive Architect",
+  "Brizy",
+  "WP Page Builder",
 ];
 
 export const stats = [
