@@ -3,6 +3,7 @@ import Link from "next/link";
 import { plans, site } from "@/lib/content";
 import { Button } from "@/components/ui";
 import { Icon } from "@/components/Icon";
+import { CheckoutButton } from "@/components/CheckoutButton";
 
 export const metadata: Metadata = {
   title: "Checkout",
@@ -21,6 +22,8 @@ export default async function CheckoutPage({
   const plan =
     plans.find((p) => p.name.toLowerCase() === (planKey ?? "pro").toLowerCase()) ??
     plans.find((p) => p.featured)!;
+  const planSlug = plan.name.toLowerCase();
+  const isFree = /^\$?0/.test(plan.price);
 
   return (
     <div className="relative min-h-[70vh] overflow-hidden">
@@ -63,38 +66,43 @@ export default async function CheckoutPage({
           </div>
         </div>
 
-        {/* Payment panel (Stripe-ready placeholder) */}
+        {/* Payment panel */}
         <div className="card flex flex-col p-8">
           <h2 className="text-lg font-semibold text-fg">Payment</h2>
 
-          <div className="mt-5 rounded-xl border border-dashed border-line-strong bg-ink-850/60 p-6 text-center">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-glow/15 text-cyan-glow">
-              <Icon name="lock" className="h-5 w-5" />
-            </span>
-            <p className="mt-4 text-sm font-medium text-fg">Secure checkout coming soon</p>
-            <p className="mt-2 text-xs leading-relaxed text-fg-dim">
-              This build ships a Stripe-ready checkout stub. Wire your{" "}
-              <span className="font-mono text-fg-muted">STRIPE_SECRET_KEY</span> and a Checkout Session
-              endpoint to take this plan live.
-            </p>
-          </div>
+          {isFree ? (
+            <>
+              <p className="mt-5 text-sm leading-relaxed text-fg-muted">
+                The {plan.name} plan is free — no payment needed. Download the plugin and start
+                building right away.
+              </p>
+              <div className="mt-6">
+                <Button href="/download" variant="primary" icon="download" className="w-full">
+                  Download free
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="mt-5 flex items-center gap-3 rounded-xl border border-line bg-ink-850/60 p-4">
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-glow/15 text-cyan-glow">
+                  <Icon name="lock" className="h-5 w-5" />
+                </span>
+                <p className="text-xs leading-relaxed text-fg-muted">
+                  You&apos;ll be redirected to Stripe&apos;s secure, PCI-compliant checkout to enter
+                  your card details. We never see or store your card.
+                </p>
+              </div>
 
-          {/* Disabled mock card form, styled for when Stripe Elements drops in */}
-          <div className="mt-6 space-y-3 opacity-50" aria-hidden>
-            <Field label="Email" placeholder="you@company.com" />
-            <Field label="Card number" placeholder="4242 4242 4242 4242" />
-            <div className="grid grid-cols-2 gap-3">
-              <Field label="Expiry" placeholder="MM / YY" />
-              <Field label="CVC" placeholder="123" />
-            </div>
-          </div>
+              <div className="mt-6">
+                <CheckoutButton plan={planSlug} price={plan.price} period={plan.period} />
+              </div>
 
-          <button
-            disabled
-            className="mt-6 w-full cursor-not-allowed rounded-xl bg-ink-700 px-5 py-3 text-sm font-semibold text-fg-dim"
-          >
-            Pay {plan.price}{plan.period}
-          </button>
+              <div className="mt-6 flex items-center justify-center gap-2 text-xs text-fg-dim">
+                <Icon name="shield" className="h-4 w-4" /> 14-day money-back guarantee
+              </div>
+            </>
+          )}
 
           <p className="mt-4 text-center text-xs text-fg-dim">
             Questions before you buy?{" "}
@@ -102,10 +110,6 @@ export default async function CheckoutPage({
               Contact us
             </a>
           </p>
-
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-fg-dim">
-            <Icon name="shield" className="h-4 w-4" /> 14-day money-back guarantee
-          </div>
         </div>
       </div>
 
@@ -118,18 +122,5 @@ export default async function CheckoutPage({
         </p>
       </div>
     </div>
-  );
-}
-
-function Field({ label, placeholder }: { label: string; placeholder: string }) {
-  return (
-    <label className="block">
-      <span className="text-xs font-medium text-fg-muted">{label}</span>
-      <input
-        disabled
-        placeholder={placeholder}
-        className="mt-1.5 w-full rounded-lg border border-line bg-ink-850 px-3 py-2.5 text-sm text-fg placeholder:text-fg-dim"
-      />
-    </label>
   );
 }
