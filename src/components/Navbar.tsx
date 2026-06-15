@@ -40,7 +40,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button href="/download" variant="ghost">Download</Button>
+          <Button href="/account" variant="ghost">Account</Button>
           <Button href="/pricing" variant="primary">Get Pro</Button>
         </div>
 
@@ -67,7 +67,7 @@ export function Navbar() {
               </Link>
             ))}
             <div className="mt-3 flex flex-col gap-2">
-              <Button href="/download" variant="outline" className="w-full">Download free</Button>
+              <Button href="/account" variant="outline" className="w-full">Your account</Button>
               <Button href="/pricing" variant="primary" className="w-full">Get Pro</Button>
             </div>
           </div>
@@ -107,6 +107,7 @@ export function Footer() {
             { label: "Download free", href: "/download" },
             { label: "Get Pro", href: "/checkout?plan=pro" },
             { label: "Agency", href: "/checkout?plan=agency" },
+            { label: "Your account", href: "/account" },
             { label: "FAQ", href: "/#faq" },
           ]}
         />

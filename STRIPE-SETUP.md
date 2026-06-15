@@ -26,7 +26,13 @@ Browser ── /pricing → Get Pro ──▶ Next.js CheckoutButton
   update server.
 - **Frontend** (this app): the `/checkout` page's **CheckoutButton** calls
   `${NEXT_PUBLIC_BACKEND_URL}/api/checkout` and redirects to Stripe; the
-  `/checkout/success` page fetches a session summary from the backend.
+  `/checkout/success` page shows the issued **license key** (the session lookup
+  fulfils on demand, so the key appears even before the webhook lands).
+- **Customer account** (`/account`): passwordless magic-link sign-in → license
+  key, linked sites, days left, licensed re-download, and **Manage billing**
+  (Stripe Customer Portal).
+- **Admin** (`/admin`): password-gated dashboard — customers, subscriptions,
+  MRR/ARR, search & per-license detail.
 - **Plugin** (`aiwp/`): a real license client + tier gating + auto-updater.
 
 So the full chain — pay → get a key → activate → unlock Pro features → receive
@@ -61,15 +67,22 @@ To change a price or add a plan, edit `PLANS` in the backend config — not Stri
 **Backend** (`jorapress-backend/.env`) — all the secrets live here:
 
 ```
-MONGODB_URI=mongodb+srv://…           # MongoDB Atlas (add /jorapress as the db name)
+MONGODB_URI=mongodb+srv://…/jorapress  # MongoDB Atlas — note the /jorapress db name
 STRIPE_SECRET_KEY=sk_test_…
 STRIPE_WEBHOOK_SECRET=whsec_…
-CHECKOUT_SUCCESS_URL=https://jorapress.com/checkout/success
-CHECKOUT_CANCEL_URL=https://jorapress.com/checkout
-ALLOWED_ORIGINS=https://jorapress.com
+CHECKOUT_SUCCESS_URL=https://www.jorapress.com/checkout/success
+CHECKOUT_CANCEL_URL=https://www.jorapress.com/checkout
+APP_URL=https://www.jorapress.com     # used for magic-link + account emails
+ALLOWED_ORIGINS=https://www.jorapress.com,https://jorapress.com
 PUBLIC_URL=https://<BACKEND-HOST>
-# SMTP_* already set (Zoho) for license-key emails
+AUTH_SECRET=<64+ random hex chars>    # signs customer sign-in tokens
+ADMIN_PASSWORD=<your admin password>  # unlocks /admin
+# SMTP_* already set (Zoho) for license-key + sign-in emails
 ```
+
+> ⚠️ These are **server env vars** — set them in your backend host (Vercel/
+> Railway/etc.), not in a committed file. `??` fallbacks don't apply to empty
+> strings, so a blank `CHECKOUT_SUCCESS_URL` causes Stripe's "Not a valid URL".
 
 No `STRIPE_PRICE_*` — pricing is in `src/config.ts`.
 
