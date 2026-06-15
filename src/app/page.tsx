@@ -16,10 +16,13 @@ import { PricingCards } from "@/components/Pricing";
 import { Faq } from "@/components/Faq";
 import { Reveal, SpotlightCard } from "@/components/Motion";
 import { BuildersMarquee } from "@/components/Marquee";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema, graph } from "@/lib/seo";
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={graph(faqPageSchema())} />
       <Hero />
       <Stats />
       <BuildersMarquee />

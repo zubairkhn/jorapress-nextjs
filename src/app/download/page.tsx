@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { site } from "@/lib/content";
 import { Button, Section, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/Icon";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema, graph, softwareApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Download",
+  title: "Download JoraPress Free for WordPress",
   description:
     "Download JoraPress free for WordPress. Install, connect your AI agent over MCP or the built-in chat panel, and start building. Requires WordPress 6.5+ and PHP 8.1+.",
+  alternates: { canonical: "/download" },
 };
 
 const installSteps = [
@@ -19,6 +22,15 @@ const installSteps = [
 export default function DownloadPage() {
   return (
     <>
+      <JsonLd
+        data={graph(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Download", path: "/download" },
+          ]),
+          softwareApplicationSchema
+        )}
+      />
       <div className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 bg-grid opacity-50" />
         <div className="absolute inset-0 glow-radial" />

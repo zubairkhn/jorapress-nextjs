@@ -113,7 +113,7 @@ export function Footer() {
         <FooterCol
           title="Company"
           links={[
-            { label: "gharfar.com", href: "https://gharfar.com" },
+            { label: "jorapress.com", href: "https://jorapress.com" },
             { label: "Contact", href: `mailto:${site.email}` },
             { label: "License (GPL-2.0)", href: "https://www.gnu.org/licenses/gpl-2.0.html" },
           ]}

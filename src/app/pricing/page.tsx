@@ -3,16 +3,34 @@ import { Section, SectionHeading } from "@/components/ui";
 import { PricingCards } from "@/components/Pricing";
 import { Faq } from "@/components/Faq";
 import { Icon } from "@/components/Icon";
+import { JsonLd } from "@/components/JsonLd";
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  graph,
+  softwareApplicationSchema,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
     "JoraPress pricing — start free forever, upgrade to Pro for automated fixers, skills, memory and scheduled health reports. Agency plans for teams.",
+  alternates: { canonical: "/pricing" },
 };
 
 export default function PricingPage() {
   return (
     <>
+      <JsonLd
+        data={graph(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Pricing", path: "/pricing" },
+          ]),
+          softwareApplicationSchema,
+          faqPageSchema()
+        )}
+      />
       <div className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 bg-grid opacity-50" />
         <div className="absolute inset-0 glow-radial" />

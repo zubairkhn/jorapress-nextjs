@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { plans } from "@/lib/content";
+import { plans, site } from "@/lib/content";
 import { Button } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Checkout",
   description: "Complete your JoraPress subscription.",
+  alternates: { canonical: "/checkout" },
+  // Transactional page — keep it out of the index but let crawlers follow links.
+  robots: { index: false, follow: true },
 };
 
 export default async function CheckoutPage({
@@ -95,7 +98,7 @@ export default async function CheckoutPage({
 
           <p className="mt-4 text-center text-xs text-fg-dim">
             Questions before you buy?{" "}
-            <a href="mailto:info@gharfar.com" className="text-cyan-soft hover:underline">
+            <a href={`mailto:${site.email}`} className="text-cyan-soft hover:underline">
               Contact us
             </a>
           </p>

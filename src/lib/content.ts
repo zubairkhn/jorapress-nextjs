@@ -3,14 +3,22 @@
  * Pulled from the JoraPress plugin README, header and WP-Doctor plan.
  */
 
+/**
+ * Canonical, absolute origin of the marketing site. Used for metadataBase,
+ * canonical URLs, the sitemap, robots and all JSON-LD `@id`/`url` fields.
+ * If the site moves (or is served from a sub-path) change this one constant —
+ * everything else (canonicals, sitemap, JSON-LD) derives from it.
+ */
+export const SITE_URL = "https://jorapress.com";
+
 export const site = {
   name: "JoraPress",
   tagline: "AI WordPress Builder",
-  domain: "gharfar.com/jorapress",
-  url: "https://gharfar.com/jorapress",
+  domain: "jorapress.com",
+  url: SITE_URL,
   author: "Zubair",
   version: "0.1.0",
-  email: "info@gharfar.com",
+  email: "info@jorapress.com",
   requires: { wp: "6.5+", php: "8.1+" },
   license: "GPL-2.0-or-later",
 };
