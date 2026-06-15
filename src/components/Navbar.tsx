@@ -5,16 +5,16 @@ import { useState } from "react";
 import { nav, site } from "@/lib/content";
 import { Icon } from "./Icon";
 import { Button } from "./ui";
+import { BrandLockup } from "./Brand";
 
 export function Logo() {
   return (
-    <Link href="/" className="group flex items-center gap-2.5">
-      <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-glow text-ink-950 shadow-[0_0_20px_-4px_rgba(34,211,238,0.8)]">
-        <Icon name="sparkle" className="h-4.5 w-4.5" strokeWidth={2} />
-      </span>
-      <span className="text-lg font-semibold tracking-tight text-fg">
-        AI<span className="text-cyan-glow">WP</span>
-      </span>
+    <Link
+      href="/"
+      aria-label="JoraPress home"
+      className="transition-opacity hover:opacity-90"
+    >
+      <BrandLockup />
     </Link>
   );
 }
@@ -121,7 +121,7 @@ export function Footer() {
       </div>
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-fg-dim sm:flex-row">
-          <p>© {new Date().getFullYear()} AIWP by {site.author}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} JoraPress by {site.author}. All rights reserved.</p>
           <p>Requires WordPress {site.requires.wp} · PHP {site.requires.php}</p>
         </div>
       </div>

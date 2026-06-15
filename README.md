@@ -1,6 +1,6 @@
-# AIWP — Marketing & Download Site
+# JoraPress — Marketing & Download Site
 
-The public website for the **AIWP — AI WordPress Builder** plugin. Lets visitors
+The public website for the **JoraPress — AI WordPress Builder** plugin. Lets visitors
 explore everything the plugin does, download the free version, and subscribe to
 Pro / Agency.
 
@@ -36,7 +36,7 @@ src/
   lib/
     content.ts        ALL copy/data — edit here to change the site
 public/
-    aiwp.zip          the packaged free plugin (served at /download)
+    jorapress.zip          the packaged free plugin (served at /download)
 ```
 
 All copy and data lives in [`src/lib/content.ts`](src/lib/content.ts) — plans,
@@ -56,10 +56,10 @@ it live:
 
 ## Updating the downloadable plugin
 
-The free download is `public/aiwp.zip`. Re-package from the plugin folder:
+The free download is `public/jorapress.zip`. Re-package from the plugin folder:
 
 ```bash
 cd ../  # plugins dir
-zip -rq aiwp-nextjs/public/aiwp.zip aiwp -x "aiwp/.git/*" "*/.DS_Store"
+zip -rq jorapress-nextjs/public/jorapress.zip jorapress -x "jorapress/.git/*" "*/.DS_Store"
 ```
 # jorapress-nextjs

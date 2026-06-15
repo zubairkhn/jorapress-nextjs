@@ -7,7 +7,7 @@ import { Icon } from "@/components/Icon";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "AIWP pricing — start free forever, upgrade to Pro for automated fixers, skills, memory and scheduled health reports. Agency plans for teams.",
+    "JoraPress pricing — start free forever, upgrade to Pro for automated fixers, skills, memory and scheduled health reports. Agency plans for teams.",
 };
 
 export default function PricingPage() {
@@ -31,7 +31,7 @@ export default function PricingPage() {
         <PricingCards />
         <p className="mt-8 text-center text-xs text-fg-dim">
           Prices in USD. Pro &amp; Agency include automatic updates from our self-hosted update server.
-          AIWP self-distributes — it is not on the WordPress.org repo because it ships code execution.
+          JoraPress self-distributes — it is not on the WordPress.org repo because it ships code execution.
         </p>
       </Section>
 

@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/Navbar";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gharfar.com"),
   title: {
-    default: "AIWP — Let your AI agent build & heal your WordPress site",
-    template: "%s · AIWP",
+    default: "JoraPress — Let your AI agent build & heal your WordPress site",
+    template: "%s · JoraPress",
   },
   description:
-    "AIWP is a secure remote-execution bridge for WordPress. Connect Claude Code, Cursor or Windsurf over MCP — or use the built-in chat panel — to build pages in any builder, then diagnose and fix bugs, performance and SEO. Every action gated, snapshotted, audited and reversible.",
+    "JoraPress is a secure remote-execution bridge for WordPress. Connect Claude Code, Cursor or Windsurf over MCP — or use the built-in chat panel — to build pages in any builder, then diagnose and fix bugs, performance and SEO. Every action gated, snapshotted, audited and reversible.",
   keywords: [
     "WordPress AI",
     "MCP WordPress",
@@ -23,7 +27,7 @@ export const metadata: Metadata = {
     "Claude Code WordPress",
   ],
   openGraph: {
-    title: "AIWP — AI WordPress Builder & Doctor",
+    title: "JoraPress — AI WordPress Builder & Doctor",
     description:
       "Let your AI agent build and heal your WordPress site over MCP or a built-in chat panel — safely.",
     type: "website",
@@ -32,8 +36,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="flex min-h-screen flex-col bg-ink-950">
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${geistMono.variable} antialiased`}
+    >
+      <body suppressHydrationWarning className="flex min-h-screen flex-col bg-ink-950">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

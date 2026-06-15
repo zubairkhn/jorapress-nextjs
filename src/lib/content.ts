@@ -1,13 +1,13 @@
 /**
  * Single source of truth for marketing content.
- * Pulled from the AIWP plugin README, header and WP-Doctor plan.
+ * Pulled from the JoraPress plugin README, header and WP-Doctor plan.
  */
 
 export const site = {
-  name: "AIWP",
+  name: "JoraPress",
   tagline: "AI WordPress Builder",
-  domain: "gharfar.com/aiwp",
-  url: "https://gharfar.com/aiwp",
+  domain: "gharfar.com/jorapress",
+  url: "https://gharfar.com/jorapress",
   author: "Zubair",
   version: "0.1.0",
   email: "info@gharfar.com",
@@ -27,13 +27,24 @@ export const hero = {
   eyebrow: "MCP + Built-in chat agent · Works with every page builder",
   title: "Let your AI agent build and heal your WordPress site.",
   subtitle:
-    "AIWP is a secure remote-execution bridge for WordPress. Connect Claude Code, Cursor or Windsurf over MCP — or use the built-in chat panel — to design pages in any builder, then diagnose and fix bugs, performance and SEO. Every action gated, snapshotted, audited and reversible.",
+    "JoraPress is a secure remote-execution bridge for WordPress. Connect Claude Code, Cursor or Windsurf over MCP — or use the built-in chat panel — to design pages in any builder, then diagnose and fix bugs, performance and SEO. Every action gated, snapshotted, audited and reversible.",
   points: [
     "No per-builder code — works with Elementor, Bricks, Divi, Gutenberg & more",
     "Ships no API key in MCP mode — the intelligence is your agent",
     "Not just building: a full WordPress Doctor that diagnoses + fixes",
   ],
 };
+
+export const builders = [
+  "Elementor",
+  "Bricks",
+  "Divi",
+  "Gutenberg",
+  "Beaver Builder",
+  "Oxygen",
+  "WP-CLI",
+  "WooCommerce",
+];
 
 export const stats = [
   { value: "2", label: "Front doors", sub: "MCP endpoint + admin chat" },
@@ -51,7 +62,7 @@ export type Feature = {
 export const frontDoors: Feature[] = [
   {
     title: "MCP endpoint — Bring Your Own Agent",
-    desc: "POST /wp-json/aiwp/v1/mcp speaks JSON-RPC 2.0 over Streamable HTTP. Create an Application Password, drop the snippet into Claude Code, Cursor or Windsurf, and your agent runs the show. No model and no API key ever ship with the plugin.",
+    desc: "POST /wp-json/jorapress/v1/mcp speaks JSON-RPC 2.0 over Streamable HTTP. Create an Application Password, drop the snippet into Claude Code, Cursor or Windsurf, and your agent runs the show. No model and no API key ever ship with the plugin.",
     icon: "plug",
   },
   {
@@ -90,7 +101,7 @@ export const safety: Feature[] = [
   { title: "Crash guard", desc: "Wraps execute_php and sandbox loads — a fatal is caught and the offending file auto-disabled. No white screen.", icon: "umbrella" },
   { title: "Versioned sandbox", desc: "AI-written files live in an isolated, tracked, one-click revertible sandbox directory.", icon: "box" },
   { title: "Pre-write backups", desc: "Affected rows and posts are snapshotted before any write touches them.", icon: "save" },
-  { title: "Immutable audit log", desc: "Every single tool call is recorded and reviewable from AIWP → Audit Log.", icon: "list" },
+  { title: "Immutable audit log", desc: "Every single tool call is recorded and reviewable from JoraPress → Audit Log.", icon: "list" },
   { title: "Rate limiting + encryption", desc: "Per-user calls/minute throttling, and API keys encrypted at rest (libsodium → OpenSSL).", icon: "key" },
 ];
 
@@ -98,7 +109,7 @@ export const steps = [
   {
     n: "01",
     title: "Install & activate",
-    desc: "Drop the plugin into wp-content/plugins, activate, and open AIWP → Dashboard. Requires WordPress 6.5+ and PHP 8.1+.",
+    desc: "Drop the plugin into wp-content/plugins, activate, and open JoraPress → Dashboard. Requires WordPress 6.5+ and PHP 8.1+.",
   },
   {
     n: "02",
@@ -120,16 +131,16 @@ export const steps = [
 export const compare = {
   title: "Beyond building — keeping sites healthy",
   intro:
-    "Novamira-style tools stop at “an AI builds your site.” AIWP starts there and keeps going: a secure execution core plus a WordPress Doctor that diagnoses and fixes real problems.",
+    "Novamira-style tools stop at “an AI builds your site.” JoraPress starts there and keeps going: a secure execution core plus a WordPress Doctor that diagnoses and fixes real problems.",
   rows: [
-    { feature: "AI builds pages in any builder", aiwp: true, others: true },
-    { feature: "Bring Your Own Agent over MCP", aiwp: true, others: false },
-    { feature: "No bundled API key required", aiwp: true, others: false },
-    { feature: "Diagnose bugs, performance & SEO", aiwp: true, others: false },
-    { feature: "Auto-fix gated, snapshotted & reversible", aiwp: true, others: false },
-    { feature: "Immutable audit log of every action", aiwp: true, others: false },
-    { feature: "Scheduled health audits + email reports", aiwp: true, others: false },
-    { feature: "Self-hosted — your keys, your server", aiwp: true, others: false },
+    { feature: "AI builds pages in any builder", jorapress: true, others: true },
+    { feature: "Bring Your Own Agent over MCP", jorapress: true, others: false },
+    { feature: "No bundled API key required", jorapress: true, others: false },
+    { feature: "Diagnose bugs, performance & SEO", jorapress: true, others: false },
+    { feature: "Auto-fix gated, snapshotted & reversible", jorapress: true, others: false },
+    { feature: "Immutable audit log of every action", jorapress: true, others: false },
+    { feature: "Scheduled health audits + email reports", jorapress: true, others: false },
+    { feature: "Self-hosted — your keys, your server", jorapress: true, others: false },
   ],
 };
 
@@ -182,7 +193,7 @@ export const plans: Plan[] = [
     name: "Agency",
     price: "$249",
     period: "/year",
-    blurb: "For teams running AIWP across many client sites.",
+    blurb: "For teams running JoraPress across many client sites.",
     cta: "Get Agency",
     href: "/checkout?plan=agency",
     features: [
@@ -198,8 +209,8 @@ export const plans: Plan[] = [
 
 export const faqs = [
   {
-    q: "Is AIWP safe to run?",
-    a: "AIWP ships remote arbitrary code execution as a feature, so the security layer is the product. AI abilities ship OFF behind a master switch, with a production guardrail, write-gating, a crash guard, automatic backups, a versioned sandbox, rate limiting and an immutable audit log. It is built for dev and staging environments — not a production site with live traffic.",
+    q: "Is JoraPress safe to run?",
+    a: "JoraPress ships remote arbitrary code execution as a feature, so the security layer is the product. AI abilities ship OFF behind a master switch, with a production guardrail, write-gating, a crash guard, automatic backups, a versioned sandbox, rate limiting and an immutable audit log. It is built for dev and staging environments — not a production site with live traffic.",
   },
   {
     q: "Do I need an API key?",
@@ -215,7 +226,7 @@ export const faqs = [
   },
   {
     q: "How do updates and licensing work?",
-    a: "AIWP self-distributes because the WordPress.org repo will not accept arbitrary code execution. Pro and Agency include a license key for automatic updates from our self-hosted update server.",
+    a: "JoraPress self-distributes because the WordPress.org repo will not accept arbitrary code execution. Pro and Agency include a license key for automatic updates from our self-hosted update server.",
   },
   {
     q: "What are the requirements?",

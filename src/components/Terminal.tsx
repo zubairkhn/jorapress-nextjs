@@ -5,7 +5,7 @@ export function Terminal() {
         <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
         <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
         <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-        <span className="ml-3 font-mono text-xs text-fg-dim">claude-code › aiwp-mcp</span>
+        <span className="ml-3 font-mono text-xs text-fg-dim">claude-code › jorapress-mcp</span>
         <span className="ml-auto inline-flex items-center gap-1.5 text-[10px] font-medium text-lime-glow">
           <span className="h-1.5 w-1.5 rounded-full bg-lime-glow animate-pulse-dot" /> connected
         </span>

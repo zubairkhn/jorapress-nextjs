@@ -6,13 +6,13 @@ import { Icon } from "@/components/Icon";
 export const metadata: Metadata = {
   title: "Download",
   description:
-    "Download AIWP free for WordPress. Install, connect your AI agent over MCP or the built-in chat panel, and start building. Requires WordPress 6.5+ and PHP 8.1+.",
+    "Download JoraPress free for WordPress. Install, connect your AI agent over MCP or the built-in chat panel, and start building. Requires WordPress 6.5+ and PHP 8.1+.",
 };
 
 const installSteps = [
-  { t: "Copy the plugin", d: "Drop the aiwp/ folder into wp-content/plugins/ (or upload the zip from Plugins → Add New)." },
-  { t: "Activate it", d: "Activate “AIWP — AI WordPress Builder” in WP admin. Optionally run composer install for dev tooling — the plugin runs without it." },
-  { t: "Enable AI abilities", d: "Open AIWP → Dashboard and click Enable AI abilities. Everything stays read-only until you do." },
+  { t: "Copy the plugin", d: "Drop the jorapress/ folder into wp-content/plugins/ (or upload the zip from Plugins → Add New)." },
+  { t: "Activate it", d: "Activate “JoraPress — AI WordPress Builder” in WP admin. Optionally run composer install for dev tooling — the plugin runs without it." },
+  { t: "Enable AI abilities", d: "Open JoraPress → Dashboard and click Enable AI abilities. Everything stays read-only until you do." },
   { t: "Connect & build", d: "Add the MCP server to your agent, or paste a provider key into the chat panel — then start prompting." },
 ];
 
@@ -27,14 +27,14 @@ export default function DownloadPage() {
             <Icon name="wp" className="h-4 w-4 text-cyan-glow" /> Free · v{site.version} · GPL-2.0
           </span>
           <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
-            Download <span className="text-gradient">AIWP</span> free
+            Download <span className="text-gradient">JoraPress</span> free
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-pretty text-fg-muted">
             The full execution core and Site Doctor scanners, free forever. Built for development and
             staging. Requires WordPress {site.requires.wp} and PHP {site.requires.php}.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/aiwp.zip" variant="primary" icon="download">Download .zip</Button>
+            <Button href="/jorapress.zip" variant="primary" icon="download">Download .zip</Button>
             <Button href="https://github.com/" variant="outline" icon="github">View on GitHub</Button>
           </div>
           <p className="mt-4 text-xs text-fg-dim">
@@ -65,17 +65,17 @@ export default function DownloadPage() {
         <SectionHeading
           eyebrow="Connect over MCP"
           title="Add the server to your AI client"
-          subtitle="Create an Application Password in AIWP → Connect (MCP), then add the server to Claude Code, Cursor or Windsurf. No model or API key ships with the plugin."
+          subtitle="Create an Application Password in JoraPress → Connect (MCP), then add the server to Claude Code, Cursor or Windsurf. No model or API key ships with the plugin."
         />
         <div className="card mx-auto mt-10 max-w-2xl overflow-hidden">
           <div className="flex items-center gap-2 border-b border-line bg-ink-850 px-4 py-3">
-            <span className="font-mono text-xs text-fg-dim">~/.config/mcp/aiwp.json</span>
+            <span className="font-mono text-xs text-fg-dim">~/.config/mcp/jorapress.json</span>
           </div>
           <pre className="thin-scroll overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-fg-muted">
 {`{
   "mcpServers": {
-    "aiwp": {
-      "url": "https://your-site.com/wp-json/aiwp/v1/mcp",
+    "jorapress": {
+      "url": "https://your-site.com/wp-json/jorapress/v1/mcp",
       "transport": "streamable-http",
       "auth": {
         "type": "basic",
@@ -88,7 +88,7 @@ export default function DownloadPage() {
           </pre>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-fg-dim">
-          Endpoint: <span className="font-mono text-fg-muted">POST /wp-json/aiwp/v1/mcp</span> · JSON-RPC 2.0
+          Endpoint: <span className="font-mono text-fg-muted">POST /wp-json/jorapress/v1/mcp</span> · JSON-RPC 2.0
           over Streamable HTTP · HTTP Basic auth over HTTPS. Implements initialize, tools/list, tools/call, ping.
         </p>
       </Section>

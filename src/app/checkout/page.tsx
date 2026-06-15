@@ -6,7 +6,7 @@ import { Icon } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Checkout",
-  description: "Complete your AIWP subscription.",
+  description: "Complete your JoraPress subscription.",
 };
 
 export default async function CheckoutPage({
@@ -33,7 +33,7 @@ export default async function CheckoutPage({
 
           <div className="mt-6 flex items-baseline justify-between border-b border-line pb-5">
             <div>
-              <p className="text-lg font-semibold text-fg">AIWP {plan.name}</p>
+              <p className="text-lg font-semibold text-fg">JoraPress {plan.name}</p>
               <p className="text-sm text-fg-muted">{plan.blurb}</p>
             </div>
             <p className="whitespace-nowrap text-2xl font-bold text-fg">
